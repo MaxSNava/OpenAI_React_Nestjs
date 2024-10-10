@@ -18,3 +18,11 @@ npm install
 cd ../backend
 npm install
 ```
+3. Correr en dev
+```bash
+cd frontend
+npm start 
+
+cd ../backend
+npm run start:dev
+```
