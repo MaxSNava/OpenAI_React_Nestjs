@@ -6,9 +6,7 @@ html, body {
   background-color: #000000;
   color: white;
   font-family: 'Open Sans', sans-serif;
-  
 }
-
 
 h1 {
   @apply text-3xl font-bold mb-4;
@@ -30,7 +28,6 @@ em {
   @apply italic text-pink-500;
 }
 
-
 .btn-primary {
   @apply bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl hover:bg-indigo-700 transition-all duration-200 ease-in-out;
 }
@@ -44,14 +41,11 @@ em {
 }
 
 .chat-messages {
-  @apply flex flex-col h-full overflow-x-auto mb-4 overflow-scroll;
+  @apply flex flex-col h-full overflow-x-auto mb-4 /*overflow-scroll*/ ;
 }
 
-
 /* Animations */
-
 .fade-in { animation: fadeIn .3s; }
-
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
