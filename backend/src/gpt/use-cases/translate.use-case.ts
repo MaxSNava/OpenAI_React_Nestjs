@@ -21,5 +21,5 @@ export const translateUseCase = async(openai: OpenAI, options: OptionsProps) => 
     max_tokens: 250,
   });
 
-  return completion.choices[0].message.content;
+  return {message: completion.choices[0].message.content};
 }
