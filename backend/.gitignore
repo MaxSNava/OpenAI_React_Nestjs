@@ -15,6 +15,10 @@ lerna-debug.log*
 # OS
 .DS_Store
 
+# Editor directories
+/generated/*
+!/generated/.gitkeep
+
 # Tests
 /coverage
 /.nyc_output
