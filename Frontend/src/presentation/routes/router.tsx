@@ -34,6 +34,12 @@ export const menuRoutes = [
     component: <TextToAudioPage />
   },
   {
+    to: "/audio-to-text",
+    title: "Audio a texto",
+    description: "Convertir audio a texto",
+    component: <AudioToTextPage />
+  },
+  {
     to: "/image-generation",
     title: "Imágenes",
     description: "Generar imágenes",
@@ -44,12 +50,6 @@ export const menuRoutes = [
     title: "Editar imagen",
     description: "Generación continua",
     component: <ImageTunningPage />
-  },
-  {
-    to: "/audio-to-text",
-    title: "Audio a texto",
-    description: "Convertir audio a texto",
-    component: <AudioToTextPage />
   },
   {
     to: "/assistant",

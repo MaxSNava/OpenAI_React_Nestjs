@@ -2,7 +2,7 @@ import { FormEvent, useRef, useState } from "react";
 import { PaperAirplaneIcon, PaperClipIcon } from '@heroicons/react/24/solid'
 
 interface TextMessageBoxProps {
-  onSendMessage: (message: string) => void;
+  onSendMessage: (message: string, file: File) => void;
   placeholder?: string;
   disableCorrections?: boolean;
   accept?: string; // image/*
@@ -16,9 +16,11 @@ export const TextMessageBoxFile = ({onSendMessage, placeholder, disableCorrectio
 
   const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (message.trim().length === 0) return;
-    onSendMessage(message);
+    // if (message.trim().length === 0) return;
+    if (!selectedFile) return;
+    onSendMessage(message, selectedFile);
     setmessage('');
+    setSelectedFile(null);
   }
 
   return (
