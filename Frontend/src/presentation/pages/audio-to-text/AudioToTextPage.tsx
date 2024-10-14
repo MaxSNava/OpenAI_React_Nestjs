@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GptMessages, GptMessagesAudio, MyMessage, TextMessageBoxFile, TypingLoader } from "../../components";
+import { GptMessages, MyMessage, TextMessageBoxFile, TypingLoader } from "../../components";
 import { audioToTextUseCase } from "../../../core";
 
 
@@ -37,7 +37,7 @@ ${respo.text}
             messages.map( (message, index) => (
               message.isGpt 
                 ? (<GptMessages key={index} text={message.text}/>)
-                : (<MyMessage text={message.text} key={index} />)
+                : (<MyMessage text={(message.text === '') ? 'Audio pass': message.text} key={index} />)
             ))
           }
           {
