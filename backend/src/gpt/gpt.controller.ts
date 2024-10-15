@@ -3,7 +3,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Response } from 'express';
 import { diskStorage } from 'multer';
 import { GptService } from './gpt.service';
-import { AudioToTextDto, ImageGenerationDto, OrthographyDto, ProsConsDicusserDto, TextToAudioDto, TranslateDto } from './dto';
+import { AudioToTextDto, ImageGenerationDto, ImageVariationDto, OrthographyDto, ProsConsDicusserDto, TextToAudioDto, TranslateDto } from './dto';
 
 @Controller('gpt')
 export class GptController {
@@ -113,5 +113,12 @@ export class GptController {
     res.setHeader('Content-Type', 'image/png');
     res.status(HttpStatus.OK);
     res.sendFile(filePath);
+  }
+
+  @Post('image-variation')
+  async imageVariation(
+    @Body() imageVariationDto: ImageVariationDto,
+  ) {
+    return await this.gptService.imageVariation(imageVariationDto);
   }
 }
