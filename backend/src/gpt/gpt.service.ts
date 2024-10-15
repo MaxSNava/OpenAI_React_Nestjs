@@ -2,8 +2,8 @@ import * as path from "path";
 import * as fs from "fs";
 import { Injectable, NotFoundException } from '@nestjs/common';
 import OpenAI from 'openai';
-import { orthographyCheckUseCase, prosConsDicusserUseCase, prosConsDicusserStreamUseCase, translateUseCase, textToAudioUseCase, audioToTextUseCase } from './use-cases';
-import { AudioToTextDto, OrthographyDto, ProsConsDicusserDto, TextToAudioDto, TranslateDto } from './dto';
+import { orthographyCheckUseCase, prosConsDicusserUseCase, prosConsDicusserStreamUseCase, translateUseCase, textToAudioUseCase, audioToTextUseCase, imageGenerationUseCase } from './use-cases';
+import { AudioToTextDto, ImageGenerationDto, OrthographyDto, ProsConsDicusserDto, TextToAudioDto, TranslateDto } from './dto';
 
 
 @Injectable()
@@ -49,6 +49,17 @@ export class GptService {
   async audioToText(audioFile: Express.Multer.File, audioToTextDto: AudioToTextDto) {
     const { prompt } = audioToTextDto;
     return await audioToTextUseCase(this.openai, {audioFile, prompt});
+  }
+
+  async imageGeneration(imageGenerationDto: ImageGenerationDto){
+    return await imageGenerationUseCase(this.openai, imageGenerationDto);
+  }
+
+  async imageGenerationGet(fileId: string){
+    const filePath = path.resolve(__dirname, '../../generated/images/', `${fileId}`);
+    const wasFound = fs.existsSync(filePath)
+    if (!wasFound) throw new NotFoundException(`File ${fileId}.png not found`);
+    return filePath;
   }
 
 }
