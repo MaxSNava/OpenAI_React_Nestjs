@@ -1,0 +1,21 @@
+interface GptMessageProps {
+  text: string;
+  imageUrl: string;
+  alt: string;
+  onImageSelect?: (imageUrl: string) => void;
+}
+
+export const GptMessagesImage = ({imageUrl, alt, onImageSelect}: GptMessageProps) => {
+  return (
+    <div className="col-start-1 col-end-8 p-3 rounded-lg">
+      <div className="flex flex-row items-start">
+        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-green-600 flex-shrink-0">
+          G
+        </div>
+        <div className="relative ml-3 text-sm bg-black bg-opacity-25 pt-3 pb-2 px-4 shadow rounded-xl">
+          <img className="mt-2 rounded-xl w-96 h-96 object-cover"  src={imageUrl} alt={alt} onClick={() => onImageSelect && onImageSelect(imageUrl)}/>
+        </div>
+      </div>
+    </div>
+  )
+}
